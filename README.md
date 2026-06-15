@@ -5,7 +5,10 @@ Hands-on comparison of chunking strategies and vector databases for RAG.
 ## Setup
 
 ```bash
-pip install -r requirements.txt
+uv init --no-readme
+uv add -r requirements.txt
+uv sync
+source .venv/bin/activate
 ```
 
 Drop PDFs into `papers/` (Attention Is All You Need is included).

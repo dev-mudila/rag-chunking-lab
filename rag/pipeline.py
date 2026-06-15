@@ -92,9 +92,12 @@ def ask(store, question, k=5):
         import openai
         api_key = os.environ.get("OPENAI_API_KEY")
         if api_key:
-            client = openai.OpenAI(api_key=api_key)
+            client = openai.OpenAI(
+                api_key=api_key,
+                base_url=os.environ.get("OPENAI_BASE_URL") or None,
+            )
             response = client.chat.completions.create(
-                model="gpt-4o",
+                model=os.environ.get("LLM_MODEL", "gpt-4o"),
                 messages=[
                     {"role": "system", "content": SYSTEM_MSG},
                     {"role": "user", "content": user_msg},
